@@ -1,0 +1,294 @@
+/* ============================================================
+   PROJECTS PAGE - Trang Dự án
+   ============================================================ */
+
+/* ── Project Grid (Bento Layout) ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+  gap: var(--space-6);
+}
+
+/* ── Project Card ── */
+.project-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-gradient);
+  opacity: 0;
+  transition: opacity var(--duration-normal);
+}
+
+.project-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-glow);
+}
+
+.project-card:hover::after {
+  opacity: 0.04;
+}
+
+.project-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.project-card__number {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-card__badge {
+  padding: 2px var(--space-2);
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.project-card__badge--done {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.project-card__badge--wip {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-warning);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.project-card__badge--todo {
+  background: rgba(100, 116, 139, 0.15);
+  color: var(--text-muted);
+  border: 1px solid rgba(100, 116, 139, 0.3);
+}
+
+.project-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-4);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 212, 170, 0.08);
+  border-radius: var(--radius-lg);
+}
+
+.project-card__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-2);
+  color: var(--text-primary);
+}
+
+.project-card__subtitle {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.project-card__description {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  flex: 1;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.project-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.project-card__link {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: gap var(--duration-normal) var(--ease-out);
+}
+
+.project-card:hover .project-card__link {
+  gap: var(--space-3);
+}
+
+/* ── Project Detail View ── */
+.project-detail {
+  padding: var(--space-8);
+}
+
+.project-detail__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-8);
+  transition: color var(--duration-fast);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+.project-detail__back:hover {
+  color: var(--color-primary);
+}
+
+.project-detail__header {
+  margin-bottom: var(--space-8);
+}
+
+.project-detail__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.project-detail__title {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-4);
+}
+
+.project-detail__description {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  max-width: 700px;
+  line-height: var(--leading-relaxed);
+}
+
+/* Content sections rendered from JSON */
+.project-content {
+  max-width: 800px;
+}
+
+.project-content h2 {
+  font-size: var(--text-2xl);
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.project-content h3 {
+  font-size: var(--text-xl);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-3);
+}
+
+.project-content p {
+  margin-bottom: var(--space-4);
+  line-height: var(--leading-relaxed);
+  max-width: 100%;
+}
+
+.project-content ul,
+.project-content ol {
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-6);
+}
+
+.project-content li {
+  margin-bottom: var(--space-2);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  list-style: disc;
+}
+
+.project-content ol li {
+  list-style: decimal;
+}
+
+.project-content img {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  margin: var(--space-6) 0;
+}
+
+.project-content .image-caption {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-top: calc(-1 * var(--space-4));
+  margin-bottom: var(--space-6);
+}
+
+/* Code block */
+.project-content pre {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  overflow-x: auto;
+  margin: var(--space-4) 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.project-content code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  color: var(--color-primary);
+}
+
+.project-content pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* Embed container */
+.project-content .embed-container {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  margin: var(--space-6) 0;
+  background: var(--bg-elevated);
+}
+
+.project-content .embed-container iframe {
+  width: 100%;
+  border: none;
+  display: block;
+}
