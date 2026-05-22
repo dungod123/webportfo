@@ -1,7 +1,4 @@
-/* ============================================================
-   DESIGN TOKENS - Microsoft 365 Light Professional Theme
-   Clean, white, modern — inspired by microsoft.com/microsoft-365
-   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap');
 
 :root {
   /* ── Color Palette (Light Professional) ── */
@@ -46,9 +43,9 @@
   --glass-blur:     24px;
   
   /* ── Typography ── */
-  --font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
-  --font-body:    'Inter', 'Segoe UI', sans-serif;
-  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+  --font-heading: 'Geist', 'Segoe UI', sans-serif;
+  --font-body:    'Geist', 'Segoe UI', sans-serif;
+  --font-mono:    'Geist Mono', monospace;
   
   /* Font sizes */
   --text-xs:    0.75rem;

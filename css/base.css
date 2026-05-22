@@ -24,7 +24,7 @@ body {
   font-weight: var(--weight-normal);
   line-height: var(--leading-normal);
   color: var(--text-primary);
-  background-color: var(--bg-primary);
+  background-color: transparent;
   min-height: 100vh;
   overflow-x: hidden;
 }

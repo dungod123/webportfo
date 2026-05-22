@@ -62,27 +62,37 @@ const PERSONAL_INFO = {
     { icon: '🚀', text: 'Học hỏi liên tục', level: '90%' },
   ],
 
-  // Mục tiêu nghề nghiệp (timeline)
+  // Quá trình học tập (timeline)
   goals: [
     {
-      date: '2025-2026',
-      title: 'Nền tảng vững chắc',
-      desc: 'Hoàn thành các môn học cơ sở, nắm vững lập trình và tư duy logic.'
+      date: 'Bài tập 1',
+      title: 'Thao tác với tệp tin và thư mục',
+      desc: 'Làm quen với hệ thống, quản lý tệp tin và tổ chức cấu trúc thư mục khoa học.'
     },
     {
-      date: '2026-2027',
-      title: 'Phát triển chuyên sâu',
-      desc: 'Tham gia dự án thực tế, học thêm về phát triển web và ứng dụng.'
+      date: 'Bài tập 2',
+      title: 'Tìm kiếm & đánh giá thông tin',
+      desc: 'Nâng cao kỹ năng khai thác internet, sử dụng cú pháp tìm kiếm nâng cao và kiểm chứng nguồn tin.'
     },
     {
-      date: '2027-2028',
-      title: 'Thực tập & Trải nghiệm',
-      desc: 'Thực tập tại công ty công nghệ, xây dựng portfolio chuyên nghiệp.'
+      date: 'Bài tập 3',
+      title: 'Viết Prompt hiệu quả với AI',
+      desc: 'Học cách giao tiếp, thiết kế câu lệnh tối ưu để làm việc cùng AI hiệu quả.'
     },
     {
-      date: '2028-2029',
-      title: 'Khởi đầu sự nghiệp',
-      desc: 'Tốt nghiệp và bắt đầu sự nghiệp trong lĩnh vực kỹ thuật phần mềm.'
+      date: 'Bài tập 4',
+      title: 'Công cụ hợp tác trực tuyến',
+      desc: 'Ứng dụng các nền tảng số để làm việc nhóm, chia sẻ dữ liệu và cộng tác trực tuyến.'
+    },
+    {
+      date: 'Bài tập 5',
+      title: 'Sáng tạo nội dung số với AI',
+      desc: 'Sử dụng công nghệ AI để lên ý tưởng, thiết kế hình ảnh và sản xuất nội dung số đa phương tiện.'
+    },
+    {
+      date: 'Bài tập 6',
+      title: 'Sử dụng AI có trách nhiệm',
+      desc: 'Hiểu về bản quyền, đạo đức AI, tính bảo mật dữ liệu và ứng dụng AI bền vững.'
     }
   ]
 };
@@ -240,8 +250,8 @@ export function renderIntroPage() {
     <section class="section" id="goals-section">
       <div class="container container--narrow">
         <div class="section__header reveal">
-          <span class="section__label">Mục tiêu</span>
-          <h2 class="section__title">Lộ trình nghề nghiệp</h2>
+          <span class="section__label">Lộ trình</span>
+          <h2 class="section__title">Quá trình học tập</h2>
           <div class="divider"></div>
         </div>
         <div class="timeline stagger-children">
