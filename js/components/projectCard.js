@@ -29,21 +29,36 @@ export function renderProjectCard(project, index) {
          tabindex="0"
          role="button"
          aria-label="Xem chi tiết ${project.title}">
-      <div class="project-card__number">
-        <span>Bài tập ${project.id}</span>
-        <span class="project-card__badge project-card__badge--${status.class}">
-          ${status.label}
-        </span>
-      </div>
-      <div class="project-card__icon">${project.icon || '📄'}</div>
-      <h3 class="project-card__title">${project.title}</h3>
-      <p class="project-card__subtitle">${project.subtitle || ''}</p>
-      <p class="project-card__description">${project.description}</p>
-      <div class="project-card__tags">${tags}</div>
-      <div class="project-card__footer">
-        <span class="project-card__link">
-          Xem chi tiết <span>→</span>
-        </span>
+      
+      <!-- Animated Neon Border Background -->
+      <div class="project-card__neon-bg"></div>
+
+      <div class="project-card__inner">
+        <div class="project-card__main">
+          <div class="project-card__icon">${project.icon || '📄'}</div>
+          <div class="project-card__info">
+            <h3 class="project-card__title">${project.title}</h3>
+            <p class="project-card__subtitle">${project.subtitle || ''}</p>
+          </div>
+          <div class="project-card__status">
+            <span class="project-card__badge project-card__badge--${status.class}">
+              ${status.label}
+            </span>
+            <span class="project-card__id">Bài tập ${project.id}</span>
+          </div>
+        </div>
+
+        <div class="project-card__drawer">
+          <div class="project-card__drawer-content">
+            <p class="project-card__description">${project.description}</p>
+            <div class="project-card__tags">${tags}</div>
+            <div class="project-card__footer">
+              <span class="project-card__link">
+                Mở bài tập <span>→</span>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   `;
