@@ -1,6 +1,6 @@
 /**
- * Particle Background - Canvas-based animated particles
- * Creates floating, connecting particles with mouse interaction
+ * Particle Background - Subtle light theme particles
+ * Barely visible soft dots for professional feel
  */
 
 export default class ParticleBackground {
@@ -15,12 +15,12 @@ export default class ParticleBackground {
     this.isRunning = false;
     
     this.config = {
-      particleCount: 60,
-      particleSize: { min: 1, max: 2.5 },
-      speed: 0.3,
-      connectionDistance: 150,
-      colors: ['#00d4aa', '#00b4d8', '#7c3aed'],
-      opacity: 0.5
+      particleCount: 35,
+      particleSize: { min: 1, max: 2 },
+      speed: 0.2,
+      connectionDistance: 140,
+      colors: ['#0067b8', '#5c2d91', '#008272'],
+      opacity: 0.15
     };
 
     this.init();
@@ -42,13 +42,13 @@ export default class ParticleBackground {
       width: 100%; height: 100%;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.6;
+      opacity: 0.3;
     `;
   }
 
   createParticles() {
     this.particles = [];
-    const count = Math.min(this.config.particleCount, Math.floor(window.innerWidth / 20));
+    const count = Math.min(this.config.particleCount, Math.floor(window.innerWidth / 35));
     
     for (let i = 0; i < count; i++) {
       this.particles.push({
@@ -58,7 +58,7 @@ export default class ParticleBackground {
         vx: (Math.random() - 0.5) * this.config.speed,
         vy: (Math.random() - 0.5) * this.config.speed,
         color: this.config.colors[Math.floor(Math.random() * this.config.colors.length)],
-        opacity: Math.random() * 0.5 + 0.2
+        opacity: Math.random() * 0.3 + 0.1
       });
     }
   }
@@ -82,7 +82,6 @@ export default class ParticleBackground {
 
   update() {
     this.particles.forEach(p => {
-      // Mouse interaction
       if (this.mouse.x !== null) {
         const dx = this.mouse.x - p.x;
         const dy = this.mouse.y - p.y;
@@ -90,27 +89,22 @@ export default class ParticleBackground {
         
         if (dist < this.mouse.radius) {
           const force = (this.mouse.radius - dist) / this.mouse.radius;
-          p.vx -= (dx / dist) * force * 0.02;
-          p.vy -= (dy / dist) * force * 0.02;
+          p.vx -= (dx / dist) * force * 0.01;
+          p.vy -= (dy / dist) * force * 0.01;
         }
       }
 
-      // Apply velocity
       p.x += p.vx;
       p.y += p.vy;
-
-      // Damping
       p.vx *= 0.999;
       p.vy *= 0.999;
 
-      // Ensure minimum speed
       const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-      if (speed < 0.1) {
-        p.vx += (Math.random() - 0.5) * 0.05;
-        p.vy += (Math.random() - 0.5) * 0.05;
+      if (speed < 0.05) {
+        p.vx += (Math.random() - 0.5) * 0.03;
+        p.vy += (Math.random() - 0.5) * 0.03;
       }
 
-      // Wrap around edges
       if (p.x < -10) p.x = this.canvas.width + 10;
       if (p.x > this.canvas.width + 10) p.x = -10;
       if (p.y < -10) p.y = this.canvas.height + 10;
@@ -121,7 +115,7 @@ export default class ParticleBackground {
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // Draw connections
+    // Draw connections (very subtle on light bg)
     for (let i = 0; i < this.particles.length; i++) {
       for (let j = i + 1; j < this.particles.length; j++) {
         const dx = this.particles[i].x - this.particles[j].x;
@@ -129,9 +123,9 @@ export default class ParticleBackground {
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < this.config.connectionDistance) {
-          const opacity = (1 - dist / this.config.connectionDistance) * 0.15;
+          const opacity = (1 - dist / this.config.connectionDistance) * 0.06;
           this.ctx.beginPath();
-          this.ctx.strokeStyle = `rgba(0, 212, 170, ${opacity})`;
+          this.ctx.strokeStyle = `rgba(0, 103, 184, ${opacity})`;
           this.ctx.lineWidth = 0.5;
           this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
           this.ctx.lineTo(this.particles[j].x, this.particles[j].y);

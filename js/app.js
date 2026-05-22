@@ -26,7 +26,7 @@ class App {
     // Render navbar
     renderNavbar();
 
-    // Init particle background
+    // Init particle background (subtle on light theme)
     this.particles = new ParticleBackground('particles-canvas');
 
     // Setup routes

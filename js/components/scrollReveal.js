@@ -1,16 +1,20 @@
 /**
- * Scroll Reveal - IntersectionObserver-based scroll animations
- * Adds 'revealed' class to elements with 'reveal' class when they enter viewport
+ * Scroll Reveal - Clean IntersectionObserver animations
  */
 
+let currentObserver = null;
+
 export function initScrollReveal() {
-  const observer = new IntersectionObserver(
+  if (currentObserver) {
+    currentObserver.disconnect();
+  }
+
+  currentObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('revealed');
-          // Stop observing once revealed
-          observer.unobserve(entry.target);
+          currentObserver.unobserve(entry.target);
         }
       });
     },
@@ -20,20 +24,14 @@ export function initScrollReveal() {
     }
   );
 
-  // Observe all reveal elements
-  document.querySelectorAll('.reveal').forEach(el => {
-    observer.observe(el);
+  document.querySelectorAll('.reveal:not(.revealed)').forEach(el => {
+    currentObserver.observe(el);
   });
 
-  return observer;
+  return currentObserver;
 }
 
-/**
- * Re-initialize scroll reveal for dynamically added content
- * Call this after adding new content to the page
- */
 export function refreshScrollReveal() {
-  // Small delay to ensure DOM is ready
   requestAnimationFrame(() => {
     initScrollReveal();
   });

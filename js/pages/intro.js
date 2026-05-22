@@ -40,6 +40,28 @@ const PERSONAL_INFO = {
     { name: 'Figma', icon: '🎨', level: 45 },
   ],
 
+  // Marquee items — infinite scroll content
+  marqueeRow1: [
+    { icon: '🌐', text: 'HTML / CSS', level: '70%' },
+    { icon: '⚡', text: 'JavaScript', level: '50%' },
+    { icon: '🐍', text: 'Python', level: '40%' },
+    { icon: '📦', text: 'Git & GitHub', level: '55%' },
+    { icon: '🤖', text: 'ChatGPT / AI', level: '65%' },
+    { icon: '🎨', text: 'Figma', level: '45%' },
+    { icon: '📊', text: 'Google Sheets', level: '60%' },
+    { icon: '🖥️', text: 'VS Code', level: '70%' },
+  ],
+  marqueeRow2: [
+    { icon: '🔍', text: 'Tìm kiếm thông tin', level: '75%' },
+    { icon: '📝', text: 'Viết Prompt', level: '70%' },
+    { icon: '👥', text: 'Làm việc nhóm', level: '65%' },
+    { icon: '🎬', text: 'Tạo nội dung số', level: '60%' },
+    { icon: '⚖️', text: 'AI có trách nhiệm', level: '70%' },
+    { icon: '📁', text: 'Quản lý tệp tin', level: '80%' },
+    { icon: '💡', text: 'Tư duy phản biện', level: '60%' },
+    { icon: '🚀', text: 'Học hỏi liên tục', level: '90%' },
+  ],
+
   // Mục tiêu nghề nghiệp (timeline)
   goals: [
     {
@@ -69,9 +91,32 @@ const PERSONAL_INFO = {
 // RENDER FUNCTIONS
 // ============================================================
 
+/**
+ * Render a marquee row with duplicated items for infinite scroll
+ */
+function renderMarqueeRow(items, reverse = false) {
+  const itemsHtml = items.map(item => `
+    <div class="marquee-item">
+      <span class="marquee-item__icon">${item.icon}</span>
+      <span class="marquee-item__text">${item.text}</span>
+      <span class="marquee-item__level">${item.level}</span>
+    </div>
+  `).join('');
+
+  // Duplicate items for seamless loop
+  return `
+    <div class="marquee-row">
+      <div class="marquee-track ${reverse ? 'marquee-track--reverse' : ''}">
+        ${itemsHtml}
+        ${itemsHtml}
+      </div>
+    </div>
+  `;
+}
+
 export function renderIntroPage() {
   return `
-    <!-- Hero Section -->
+    <!-- Hero Section (MS365 style) -->
     <section class="hero" id="hero-section">
       <div class="container">
         <div class="hero__content">
@@ -80,14 +125,14 @@ export function renderIntroPage() {
             <span>${PERSONAL_INFO.greeting}</span>
           </p>
           <h1 class="hero__name reveal">
-            <span class="text-gradient">${PERSONAL_INFO.name}</span>
+            ${PERSONAL_INFO.name}
           </h1>
           <p class="hero__subtitle reveal">
             ${PERSONAL_INFO.subtitle}
           </p>
           <div class="hero__cta reveal">
             <a href="#/projects" class="btn btn--primary btn--lg" id="cta-projects">
-              📂 Xem dự án
+              Xem dự án
             </a>
             <a href="#/summary" class="btn btn--outline btn--lg" id="cta-summary">
               Tổng kết hành trình
@@ -97,8 +142,16 @@ export function renderIntroPage() {
         <div class="hero__decoration" aria-hidden="true">
           <div class="hero__orb hero__orb--1"></div>
           <div class="hero__orb hero__orb--2"></div>
+          <div class="hero__orb hero__orb--3"></div>
         </div>
       </div>
+    </section>
+
+    <!-- Infinite Scrolling Marquee -->
+    <section class="marquee-section" id="marquee-section">
+      <p class="marquee-section__label">Kỹ năng & Công cụ</p>
+      ${renderMarqueeRow(PERSONAL_INFO.marqueeRow1)}
+      ${renderMarqueeRow(PERSONAL_INFO.marqueeRow2, true)}
     </section>
 
     <!-- About Section -->

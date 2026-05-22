@@ -1,8 +1,7 @@
 /* ============================================================
-   BASE STYLES - Reset, Typography, Global Utilities
+   BASE STYLES - Light Professional Theme
    ============================================================ */
 
-/* ── Modern Reset ── */
 *,
 *::before,
 *::after {
@@ -35,7 +34,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
-  color: var(--text-primary);
+  color: var(--text-heading);
 }
 
 h1 { font-size: var(--text-5xl); }
@@ -52,24 +51,18 @@ p {
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--text-accent);
   text-decoration: none;
   transition: color var(--duration-fast) var(--ease-out);
 }
 
 a:hover {
-  color: var(--color-secondary);
+  color: var(--color-primary);
+  text-decoration: underline;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-ul, ol {
-  list-style: none;
-}
+img { max-width: 100%; height: auto; display: block; }
+ul, ol { list-style: none; }
 
 button {
   font-family: inherit;
@@ -80,34 +73,27 @@ button {
   color: inherit;
 }
 
-input, textarea, select {
-  font-family: inherit;
-  font-size: inherit;
-}
+input, textarea, select { font-family: inherit; font-size: inherit; }
 
 /* ── Selection ── */
 ::selection {
-  background: rgba(0, 212, 170, 0.25);
+  background: rgba(0, 103, 184, 0.15);
   color: var(--text-primary);
 }
 
-/* ── Scrollbar ── */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-
+/* ── Scrollbar (thin, light) ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-elevated);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: var(--radius-full);
-  border: 2px solid var(--bg-primary);
+  border: 2px solid var(--bg-secondary);
 }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.25); }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--bg-hover);
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) var(--bg-secondary);
 }
 
 /* ── Utility Classes ── */
@@ -118,17 +104,10 @@ input, textarea, select {
   background-clip: text;
 }
 
-.text-glow {
-  text-shadow: 0 0 20px rgba(0, 212, 170, 0.4),
-               0 0 40px rgba(0, 212, 170, 0.1);
-}
-
 .visually-hidden {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;

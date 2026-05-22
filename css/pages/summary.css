@@ -1,5 +1,5 @@
 /* ============================================================
-   SUMMARY PAGE - Trang Tổng kết
+   SUMMARY PAGE - Light Professional Theme
    ============================================================ */
 
 .summary-hero {
@@ -10,6 +10,7 @@
 .summary-hero__title {
   font-size: var(--text-5xl);
   margin-bottom: var(--space-4);
+  color: var(--text-heading);
 }
 
 .summary-hero__subtitle {
@@ -25,7 +26,14 @@
   gap: var(--space-6);
 }
 
-.experience-card { padding: var(--space-8); }
+.experience-card {
+  padding: var(--space-8);
+  transition: all 0.35s var(--ease-fluent);
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+}
 
 .experience-card__icon {
   font-size: 2rem;
@@ -33,13 +41,14 @@
   width: 56px; height: 56px;
   display: flex; align-items: center; justify-content: center;
   border-radius: var(--radius-lg);
-  background: rgba(0, 212, 170, 0.08);
+  background: rgba(0, 103, 184, 0.06);
 }
 
 .experience-card__title {
   font-size: var(--text-xl);
   font-weight: var(--weight-semibold);
   margin-bottom: var(--space-3);
+  color: var(--text-heading);
 }
 
 .experience-card__text {
@@ -60,20 +69,22 @@
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  transition: all var(--duration-normal) var(--ease-out);
+  transition: all var(--duration-normal) var(--ease-fluent);
+  box-shadow: var(--shadow-sm);
 }
 
 .lesson-item:hover {
-  border-color: var(--border-accent);
+  border-color: var(--border-hover);
   transform: translateX(4px);
+  box-shadow: var(--shadow-md);
 }
 
 .lesson-item__number {
   width: 36px; height: 36px;
   display: flex; align-items: center; justify-content: center;
   border-radius: var(--radius-md);
-  background: var(--accent-gradient);
-  color: var(--bg-primary);
+  background: var(--text-heading);
+  color: #fff;
   font-family: var(--font-heading);
   font-weight: var(--weight-bold);
   font-size: var(--text-sm);
@@ -85,6 +96,7 @@
 .lesson-item__title {
   font-weight: var(--weight-semibold);
   margin-bottom: var(--space-1);
+  color: var(--text-heading);
 }
 
 .lesson-item__desc {
@@ -98,16 +110,19 @@
   gap: var(--space-6);
 }
 
-.stat-card { text-align: center; padding: var(--space-8) var(--space-4); }
+.stat-card {
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+  transition: all 0.35s var(--ease-fluent);
+}
+
+.stat-card:hover { transform: translateY(-4px); }
 
 .stat-card__value {
   font-size: var(--text-5xl);
   font-family: var(--font-heading);
   font-weight: var(--weight-extrabold);
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-heading);
   line-height: 1;
   margin-bottom: var(--space-2);
 }
@@ -131,6 +146,7 @@
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   min-width: 150px;
+  color: var(--text-heading);
 }
 
 .skill-progress-item__bar { flex: 1; }
@@ -149,12 +165,20 @@
   gap: var(--space-6);
 }
 
-.future-card { padding: var(--space-6); text-align: center; }
+.future-card {
+  padding: var(--space-6);
+  text-align: center;
+  transition: all 0.35s var(--ease-fluent);
+}
+
+.future-card:hover { transform: translateY(-4px); }
+
 .future-card__icon { font-size: 2.5rem; margin-bottom: var(--space-3); }
 .future-card__title {
   font-size: var(--text-lg);
   font-weight: var(--weight-semibold);
   margin-bottom: var(--space-2);
+  color: var(--text-heading);
 }
 .future-card__desc { font-size: var(--text-sm); color: var(--text-secondary); }
 

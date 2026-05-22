@@ -1,23 +1,23 @@
 /* ============================================================
-   RESPONSIVE - Media Queries
+   RESPONSIVE - Navbar + Media Queries (Light Theme)
    ============================================================ */
 
-/* ── Navbar ── */
+/* ── Navbar (MS365 light) ── */
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 70px;
-  background: rgba(6, 6, 11, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--border-subtle);
   z-index: var(--z-sticky);
-  transition: all var(--duration-normal) var(--ease-out);
+  transition: all var(--duration-normal) var(--ease-fluent);
 }
 
 .navbar.scrolled {
-  background: rgba(6, 6, 11, 0.95);
-  box-shadow: var(--shadow-lg);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-sm);
 }
 
 .navbar__inner {
@@ -34,18 +34,19 @@
   font-family: var(--font-heading);
   font-size: var(--text-xl);
   font-weight: var(--weight-bold);
-  color: var(--text-primary);
+  color: var(--text-heading);
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: var(--space-2);
 }
 
+.navbar__logo:hover { text-decoration: none; opacity: 0.8; }
+
 .navbar__logo-dot {
   width: 8px; height: 8px;
   border-radius: 50%;
   background: var(--color-primary);
-  box-shadow: 0 0 10px var(--color-primary);
 }
 
 .navbar__links {
@@ -60,25 +61,27 @@
   font-weight: var(--weight-medium);
   color: var(--text-secondary);
   border-radius: var(--radius-md);
-  transition: all var(--duration-fast) var(--ease-out);
+  transition: all var(--duration-fast) var(--ease-fluent);
   text-decoration: none;
   position: relative;
 }
 
 .navbar__link:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-heading);
+  background: var(--bg-hover);
+  text-decoration: none;
 }
 
 .navbar__link.active {
-  color: var(--color-primary);
+  color: var(--text-heading);
+  font-weight: var(--weight-semibold);
 }
 
 .navbar__link.active::after {
   content: '';
   position: absolute;
-  bottom: -2px;
-  left: 50%; right: 50%;
+  bottom: -4px;
+  left: 50%;
   transform: translateX(-50%);
   width: 20px;
   height: 2px;
@@ -98,45 +101,27 @@
 
 .navbar__toggle span {
   width: 22px; height: 2px;
-  background: var(--text-primary);
+  background: var(--text-heading);
   border-radius: var(--radius-full);
-  transition: all var(--duration-normal) var(--ease-out);
+  transition: all var(--duration-normal) var(--ease-fluent);
 }
 
-.navbar__toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.navbar__toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.navbar__toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
+.navbar__toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.navbar__toggle.active span:nth-child(2) { opacity: 0; }
+.navbar__toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
 /* ── Tablet ── */
 @media (max-width: 1024px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
 
   .about-grid {
     grid-template-columns: 1fr;
     gap: var(--space-10);
   }
 
-  .about__avatar-wrapper {
-    order: -1;
-  }
-
-  .hero__decoration {
-    display: none;
-  }
+  .about__avatar-wrapper { order: -1; }
+  .hero__decoration { display: none; }
 }
 
 /* ── Mobile ── */
@@ -148,7 +133,7 @@
   .navbar__links {
     position: fixed;
     top: 70px; left: 0; right: 0;
-    background: rgba(6, 6, 11, 0.98);
+    background: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(20px);
     flex-direction: column;
     padding: var(--space-6);
@@ -157,7 +142,8 @@
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
-    transition: all var(--duration-normal) var(--ease-out);
+    transition: all var(--duration-normal) var(--ease-fluent);
+    box-shadow: var(--shadow-lg);
   }
 
   .navbar__links.open {
@@ -172,29 +158,14 @@
     text-align: center;
   }
 
-  .navbar__toggle {
-    display: flex;
-  }
+  .navbar__toggle { display: flex; }
 
-  .hero__name {
-    font-size: clamp(2rem, 8vw, 3.5rem);
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .section__title {
-    font-size: var(--text-3xl);
-  }
-
-  .project-detail__title {
-    font-size: var(--text-3xl);
-  }
+  .hero__name { font-size: clamp(2rem, 8vw, 3.5rem); }
+  .hero__content { text-align: center; padding: 0 var(--space-4); }
+  .projects-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .section__title { font-size: var(--text-3xl); }
+  .project-detail__title { font-size: var(--text-3xl); }
 
   .skills-grid {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -206,32 +177,13 @@
     align-items: flex-start;
     gap: var(--space-2);
   }
-
-  .skill-progress-item__label {
-    min-width: unset;
-  }
-
-  .skill-progress-item__bar {
-    width: 100%;
-  }
+  .skill-progress-item__label { min-width: unset; }
+  .skill-progress-item__bar { width: 100%; }
 }
 
 @media (max-width: 480px) {
-  .hero__cta {
-    flex-direction: column;
-  }
-
-  .btn--lg {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-3);
-  }
-
-  .stat-card__value {
-    font-size: var(--text-4xl);
-  }
+  .hero__cta { flex-direction: column; }
+  .btn--lg { width: 100%; justify-content: center; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  .stat-card__value { font-size: var(--text-4xl); }
 }
