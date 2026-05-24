@@ -134,7 +134,7 @@ export function renderIntroPage() {
             <span class="wave">👋</span>
             <span>${PERSONAL_INFO.greeting}</span>
           </p>
-          <h1 class="hero__name reveal">
+          <h1 class="hero__name reveal text-plasma">
             ${PERSONAL_INFO.name}
           </h1>
           <p class="hero__subtitle reveal">
